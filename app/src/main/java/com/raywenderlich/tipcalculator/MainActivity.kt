@@ -30,16 +30,49 @@
 package com.raywenderlich.tipcalculator
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
+  //1
+  private val tipsCalculatorViewModel: TipsCalculatorViewModel  by lazy {
+    ViewModelProviders.of(this).get(TipsCalculatorViewModel::class.java)
+  }
+
+  //3
+  private val textChangedListener = object : TextWatcher {
+    override fun afterTextChanged(p0: Editable?) {
+      val totalAmount = bill_total_et.text.toString().toIntOrNull() ?: 0
+      val numberOfPpl = ppl_number_ed.text.toString().toIntOrNull() ?: 0
+      val tipsPercent = tip_percent_et.text.toString().toIntOrNull() ?: 0
+
+      tipsCalculatorViewModel.calculateTips(totalAmount, numberOfPpl, tipsPercent)
+    }
+
+    override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+    override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+  }
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
 
-    //1
     each_one_should_pay_tv.text = getString(R.string.each_one_will_pay_placeholder_text, 0)
+
+    //2
+    tipsCalculatorViewModel.eachPersonAmountToPay.observe(this, Observer {
+      each_one_should_pay_tv.text = getString(R.string.each_one_will_pay_placeholder_text, it)
+    })
+
+    //4
+    bill_total_et.addTextChangedListener(textChangedListener)
+    ppl_number_ed.addTextChangedListener(textChangedListener)
+    tip_percent_et.addTextChangedListener(textChangedListener)
   }
 }
