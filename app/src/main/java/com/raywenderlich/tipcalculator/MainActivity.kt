@@ -29,13 +29,17 @@
  */
 package com.raywenderlich.tipcalculator
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
+
+    //1
+    each_one_should_pay_tv.text = getString(R.string.each_one_will_pay_placeholder_text, 0)
   }
 }

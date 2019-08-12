@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">TipCalculator</string>
+
+  <string name="total_bill_edit_text_hint">Total bill?</string>
+  <string name="how_many_people_edit_text_hint">How many people?</string>
+  <string name="tips_percent_edit_text_hint">Tips percent?</string>
+  <string name="each_one_will_pay_placeholder_text">Each one will pay %d</string>
+
 </resources>
