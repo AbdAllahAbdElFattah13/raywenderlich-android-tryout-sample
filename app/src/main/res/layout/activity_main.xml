@@ -6,89 +6,89 @@
   android:layout_height="match_parent"
   tools:context=".MainActivity">
 
-    <!--1-->
-    <com.google.android.material.textfield.TextInputLayout
-      android:id="@+id/bill_total_til"
-      style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+  <!--1-->
+  <com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/bill_total_til"
+    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="16dp"
+    android:layout_marginEnd="8dp"
+    android:hint="@string/total_bill_edit_text_hint"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <EditText
+      android:id="@+id/bill_total_et"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginStart="8dp"
-      android:layout_marginTop="16dp"
-      android:layout_marginEnd="8dp"
-      android:hint="@string/total_bill_edit_text_hint"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent">
+      android:inputType="number" />
 
-        <EditText
-          android:id="@+id/bill_total_et"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:inputType="number" />
+  </com.google.android.material.textfield.TextInputLayout>
 
-    </com.google.android.material.textfield.TextInputLayout>
+  <!--2-->
+  <com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/ppl_number_til"
+    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="8dp"
+    android:hint="@string/how_many_people_edit_text_hint"
+    app:layout_constraintEnd_toStartOf="@+id/tip_percent_til"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toStartOf="parent"
+    app:helperText="Will default to 4 people"
+    app:helperTextEnabled="true"
+    app:layout_constraintTop_toBottomOf="@+id/bill_total_til">
 
-    <!--2-->
-    <com.google.android.material.textfield.TextInputLayout
-      android:id="@+id/ppl_number_til"
-      style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-      android:layout_width="0dp"
+    <EditText
+      android:id="@+id/ppl_number_et"
+      android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginStart="8dp"
-      android:layout_marginTop="8dp"
-      android:layout_marginEnd="8dp"
-      android:hint="@string/how_many_people_edit_text_hint"
-      app:layout_constraintEnd_toStartOf="@+id/tip_percent_til"
-      app:layout_constraintHorizontal_bias="0.5"
-      app:layout_constraintStart_toStartOf="parent"
-      app:helperText="Will default to 4 people"
-      app:helperTextEnabled="true"
-      app:layout_constraintTop_toBottomOf="@+id/bill_total_til">
+      android:inputType="number" />
 
-        <EditText
-          android:id="@+id/ppl_number_ed"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:inputType="number" />
+  </com.google.android.material.textfield.TextInputLayout>
 
-    </com.google.android.material.textfield.TextInputLayout>
+  <!--3-->
+  <com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/tip_percent_til"
+    style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="8dp"
+    android:hint="@string/tips_percent_edit_text_hint"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintStart_toEndOf="@+id/ppl_number_til"
+    app:helperText="Will default to 20%"
+    app:helperTextEnabled="true"
+    app:layout_constraintTop_toBottomOf="@+id/bill_total_til">
 
-    <!--3-->
-    <com.google.android.material.textfield.TextInputLayout
-      android:id="@+id/tip_percent_til"
-      style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-      android:layout_width="0dp"
+    <EditText
+      android:id="@+id/tip_percent_et"
+      android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginStart="8dp"
-      android:layout_marginTop="8dp"
-      android:layout_marginEnd="8dp"
-      android:hint="@string/tips_percent_edit_text_hint"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.5"
-      app:layout_constraintStart_toEndOf="@+id/ppl_number_til"
-      app:helperText="Will default to 20%"
-      app:helperTextEnabled="true"
-      app:layout_constraintTop_toBottomOf="@+id/bill_total_til">
+      android:inputType="number" />
 
-        <EditText
-          android:id="@+id/tip_percent_et"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:inputType="number" />
+  </com.google.android.material.textfield.TextInputLayout>
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <!--4-->
-    <TextView
-      android:id="@+id/each_one_should_pay_tv"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginStart="8dp"
-      android:layout_marginTop="32dp"
-      android:layout_marginEnd="8dp"
-      android:text="@string/each_one_will_pay_placeholder_text"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/ppl_number_til" />
+  <!--4-->
+  <TextView
+    android:id="@+id/each_one_should_pay_tv"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="32dp"
+    android:layout_marginEnd="8dp"
+    android:text="@string/each_one_will_pay_placeholder_text"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/ppl_number_til" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

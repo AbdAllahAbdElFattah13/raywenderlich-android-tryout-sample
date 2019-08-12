@@ -39,16 +39,14 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-  //1
   private val tipsCalculatorViewModel: TipsCalculatorViewModel  by lazy {
     ViewModelProviders.of(this).get(TipsCalculatorViewModel::class.java)
   }
 
-  //3
   private val textChangedListener = object : TextWatcher {
     override fun afterTextChanged(p0: Editable?) {
       val totalAmount = bill_total_et.text.toString().toIntOrNull() ?: 0
-      val numberOfPpl = ppl_number_ed.text.toString().toIntOrNull() ?: 0
+      val numberOfPpl = ppl_number_et.text.toString().toIntOrNull() ?: 0
       val tipsPercent = tip_percent_et.text.toString().toIntOrNull() ?: 0
 
       tipsCalculatorViewModel.calculateHowMuchEachPersonShouldPay(totalAmount, numberOfPpl, tipsPercent)
@@ -65,14 +63,12 @@ class MainActivity : AppCompatActivity() {
 
     each_one_should_pay_tv.text = getString(R.string.each_one_will_pay_placeholder_text, 0)
 
-    //2
     tipsCalculatorViewModel.eachPersonAmountToPay.observe(this, Observer {
       each_one_should_pay_tv.text = getString(R.string.each_one_will_pay_placeholder_text, it)
     })
 
-    //4
     bill_total_et.addTextChangedListener(textChangedListener)
-    ppl_number_ed.addTextChangedListener(textChangedListener)
+    ppl_number_et.addTextChangedListener(textChangedListener)
     tip_percent_et.addTextChangedListener(textChangedListener)
   }
 }

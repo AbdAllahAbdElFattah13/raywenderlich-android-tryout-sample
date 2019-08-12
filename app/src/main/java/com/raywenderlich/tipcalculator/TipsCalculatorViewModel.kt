@@ -35,29 +35,22 @@ import androidx.lifecycle.ViewModel
 
 class TipsCalculatorViewModel : ViewModel() {
 
-    //1
     private val _eachPersonAmountToPay = MutableLiveData<Int>()
     val eachPersonAmountToPay get() = _eachPersonAmountToPay
 
-    //2
     fun calculateHowMuchEachPersonShouldPay(totalBillAmount: Int, numberOfPpl: Int, tipsPercent: Int) {
-        //3
         if (totalBillAmount == 0) {
             _eachPersonAmountToPay.value = 0
             return
         }
 
-        //4
         val numberOfPplDefaulted = if (numberOfPpl == 0) 4 else numberOfPpl
         val tipsPercentDefaulted = if (tipsPercent == 0) 20 else tipsPercent
 
-        //5
         val tipsAmount = totalBillAmount * (tipsPercentDefaulted / 100.0)
 
-        //6
         val eachPersonShouldPay = ((totalBillAmount + tipsAmount) / numberOfPplDefaulted).toInt()
 
-        //7
         _eachPersonAmountToPay.value = eachPersonShouldPay
     }
 
