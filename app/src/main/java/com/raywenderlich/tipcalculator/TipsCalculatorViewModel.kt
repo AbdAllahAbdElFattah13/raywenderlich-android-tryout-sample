@@ -40,7 +40,7 @@ class TipsCalculatorViewModel : ViewModel() {
     val eachPersonAmountToPay get() = _eachPersonAmountToPay
 
     //2
-    fun calculateTips(totalBillAmount: Int, numberOfPpl: Int, tipsPercent: Int) {
+    fun calculateHowMuchEachPersonShouldPay(totalBillAmount: Int, numberOfPpl: Int, tipsPercent: Int) {
         //3
         if (totalBillAmount == 0) {
             _eachPersonAmountToPay.value = 0

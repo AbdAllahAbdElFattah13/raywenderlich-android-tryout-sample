@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
       val numberOfPpl = ppl_number_ed.text.toString().toIntOrNull() ?: 0
       val tipsPercent = tip_percent_et.text.toString().toIntOrNull() ?: 0
 
-      tipsCalculatorViewModel.calculateTips(totalAmount, numberOfPpl, tipsPercent)
+      tipsCalculatorViewModel.calculateHowMuchEachPersonShouldPay(totalAmount, numberOfPpl, tipsPercent)
     }
 
     override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
